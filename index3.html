@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALL PECK | Boston's Personal Injury Trial Attorneys</title>
+    <meta name="description" content="Compassionate Legal Guidance. Fierce Representation. Boston's top-rated personal injury attorneys. Zero fees unless we win.">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="https://cdn.prod.website-files.com/6565cd9754c4afe4b21fda21/6669c078c0a571ea56d4818b_FAVICON-PTA.png">
+    
+    <!-- Google Fonts - Archivo for bold headlines, DM Sans for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['Archivo Black', 'sans-serif'],
+                        'headline': ['Archivo', 'sans-serif'],
+                        'body': ['DM Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        peck: {
+                            yellow: '#FFD340',
+                            dark: '#0D2E41',
+                            blue: '#3DBFFF',
+                            cream: '#FFF9E8',
+                            black: '#0A0A0A',
+                        }
+                    },
+                    animation: {
+                        'marquee': 'marquee 25s linear infinite',
+                        'marquee-slow': 'marquee 45s linear infinite',
+                        'fade-up': 'fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'scale-in': 'scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.95)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        }
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        
+        body {
+            background-color: #0D2E41;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        /* Custom cursor for desktop */
+        @media (hover: hover) {
+            .cursor-peck { cursor: crosshair; }
+        }
+
+        /* Selection */
+        ::selection {
+            background: #FFD340;
+            color: #0D2E41;
+        }
+
+        /* Stagger animations */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+
+        /* Glow effect */
+        .glow-yellow {
+            box-shadow: 0 0 60px rgba(255, 211, 64, 0.3);
+        }
+
+        /* Text stroke */
+        .text-stroke {
+            -webkit-text-stroke: 2px #FFD340;
+            color: transparent;
+        }
+
+        /* Grain overlay */
+        .grain::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Horizontal scroll hide */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Hover lift */
+        .hover-lift {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Border animation */
+        .border-animate {
+            position: relative;
+        }
+        .border-animate::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FFD340;
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .border-animate:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="text-white overflow-x-hidden antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-6">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="relative z-50">
+                <img src="https://cdn.prod.website-files.com/6565cd9754c4afe4b21fda21/67fe859f67174fe748c59541_PTA-LOGO-SIGN-21.png" 
+                     alt="PECK Trial Attorneys" 
+                     class="h-12 w-auto brightness-0 invert">
+            </a>
+
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center gap-10">
+                <a href="#about" class="text-sm font-headline font-bold uppercase tracking-widest text-white/70 hover:text-peck-yellow transition-colors border-animate">About</a>
+                <a href="#results" class="text-sm font-headline font-bold uppercase tracking-widest text-white/70 hover:text-peck-yellow transition-colors border-animate">Results</a>
+                <a href="#reviews" class="text-sm font-headline font-bold uppercase tracking-widest text-white/70 hover:text-peck-yellow transition-colors border-animate">Reviews</a>
+            </div>
+
+            <!-- CTA -->
+            <div class="flex items-center gap-6">
+                <a href="tel:8575577325" class="hidden lg:flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full bg-peck-yellow flex items-center justify-center text-peck-dark group-hover:scale-110 transition-transform">
+                        <i class="fas fa-phone text-sm"></i>
+                    </div>
+                    <span class="font-headline font-bold text-white">857-557-7325</span>
+                </a>
+                <a href="#contact" class="bg-peck-yellow text-peck-dark font-headline font-bold text-sm uppercase tracking-wider py-4 px-8 hover:bg-white transition-colors">
+                    Free Consult
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden grain">
+        <!-- Background -->
+        <div class="absolute inset-0 bg-peck-dark">
+            <!-- Diagonal yellow stripe -->
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-peck-yellow transform origin-top-right skew-x-[-12deg] translate-x-1/4"></div>
+            <!-- Dark overlay on stripe for contrast -->
+            <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-transparent via-peck-dark/30 to-peck-dark"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left: Content -->
+                <div class="space-y-8">
+                    <!-- Tagline -->
+                    <div class="opacity-0 animate-fade-up stagger-1">
+                        <span class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 text-xs font-headline font-bold uppercase tracking-[0.2em] text-peck-yellow">
+                            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                            Available 24/7
+                        </span>
+                    </div>
+                    
+                    <!-- Main Headline -->
+                    <h1 class="opacity-0 animate-fade-up stagger-2">
+                        <span class="block font-display text-6xl md:text-7xl lg:text-8xl text-white leading-[0.9] tracking-tight">
+                            INSURANCE<br>
+                            COMPANIES<br>
+                            <span class="text-peck-yellow">HATE US.</span>
+                        </span>
+                    </h1>
+
+                    <p class="text-xl md:text-2xl text-white/70 max-w-lg font-body leading-relaxed opacity-0 animate-fade-up stagger-3">
+                        They're designed to pay you nothing.<br>
+                        <span class="text-white font-semibold">We're designed to stop them.</span>
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-up stagger-4">
+                        <a href="#contact" class="group relative bg-peck-yellow text-peck-dark font-headline font-bold text-lg py-5 px-10 overflow-hidden">
+                            <span class="relative z-10 flex items-center gap-3">
+                                Get Your Free Case Review
+                                <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
+                            </span>
+                            <div class="absolute inset-0 bg-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                        </a>
+                    </div>
+
+                    <!-- Trust Badge -->
+                    <div class="flex items-center gap-6 pt-4 opacity-0 animate-fade-up stagger-5">
+                        <div class="flex -space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-peck-yellow/20 border-2 border-peck-yellow flex items-center justify-center text-peck-yellow text-xs font-bold">★</div>
+                            <div class="w-10 h-10 rounded-full bg-peck-yellow/20 border-2 border-peck-yellow flex items-center justify-center text-peck-yellow text-xs font-bold">★</div>
+                            <div class="w-10 h-10 rounded-full bg-peck-yellow/20 border-2 border-peck-yellow flex items-center justify-center text-peck-yellow text-xs font-bold">★</div>
+                        </div>
+                        <div>
+                            <div class="text-white font-headline font-bold">5.0 Rating</div>
+                            <div class="text-white/50 text-sm">100+ Google Reviews</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Form Card -->
+                <div class="relative opacity-0 animate-scale-in stagger-3">
+                    <div class="absolute -inset-4 bg-peck-yellow/20 blur-3xl rounded-3xl"></div>
+                    <div class="relative bg-peck-dark border-2 border-peck-yellow p-8 md:p-10 glow-yellow">
+                        <div class="flex items-start justify-between mb-8">
+                            <div>
+                                <h3 class="font-display text-2xl text-white mb-1">FREE CASE REVIEW</h3>
+                                <p class="text-white/50 text-sm font-headline uppercase tracking-wider">Confidential • No Obligation</p>
+                            </div>
+                            <div class="w-14 h-14 bg-peck-yellow flex items-center justify-center">
+                                <i class="fas fa-shield-alt text-peck-dark text-xl"></i>
+                            </div>
+                        </div>
+                        
+                        <form class="space-y-5">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="text-[10px] uppercase tracking-widest text-white/50 mb-2 block font-headline">Name</label>
+                                    <input type="text" class="w-full bg-white/5 border border-white/20 p-4 text-white placeholder-white/30 focus:border-peck-yellow focus:outline-none transition-colors">
+                                </div>
+                                <div>
+                                    <label class="text-[10px] uppercase tracking-widest text-white/50 mb-2 block font-headline">Phone</label>
+                                    <input type="tel" class="w-full bg-white/5 border border-white/20 p-4 text-white placeholder-white/30 focus:border-peck-yellow focus:outline-none transition-colors">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest text-white/50 mb-2 block font-headline">What Happened?</label>
+                                <select class="w-full bg-white/5 border border-white/20 p-4 text-white/70 focus:border-peck-yellow focus:outline-none transition-colors appearance-none cursor-pointer">
+                                    <option value="">Select Case Type...</option>
+                                    <option>Car / Motorcycle Accident</option>
+                                    <option>Medical Malpractice</option>
+                                    <option>Workplace Injury</option>
+                                    <option>Slip & Fall</option>
+                                    <option>Wrongful Death</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="w-full bg-peck-yellow text-peck-dark font-headline font-bold py-5 hover:bg-white transition-colors uppercase tracking-wider">
+                                Get My Free Review →
+                            </button>
+                            <p class="text-center text-white/40 text-xs">
+                                Zero fees unless we win your case.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/30 animate-bounce">
+            <i class="fas fa-chevron-down text-xl"></i>
+        </div>
+    </header>
+
+    <!-- Results Marquee -->
+    <div class="bg-peck-yellow py-6 overflow-hidden" id="results">
+        <div class="flex whitespace-nowrap animate-marquee">
+            <div class="flex items-center gap-12 px-6">
+                <span class="font-display text-peck-dark text-2xl">$2.5M</span>
+                <span class="text-peck-dark/60 text-sm uppercase tracking-widest font-headline">Trucking</span>
+                <span class="text-peck-dark/30">●</span>
+                
+                <span class="font-display text-peck-dark text-2xl">$1.2M</span>
+                <span class="text-peck-dark/60 text-sm uppercase tracking-widest font-headline">Med Mal</span>
+                <span class="text-peck-dark/30">●</span>
+                
+                <span class="font-display text-peck-dark text-2xl">$750K</span>
+                <span class="text-peck-dark/60 text-sm uppercase tracking-widest font-headline">Slip & Fall</span>
+                <span class="text-peck-dark/30">●</span>
+                
+                <span class="font-display text-peck-dark text-2xl">$5M</span>
+                <span class="text-peck-dark/60 text-sm uppercase tracking-widest font-headline">Wrongful Death</span>
+                <span class="text-peck-dark/30">●</span>
+
+                <span class="font-display text-peck-dark text-2xl">$890K</span>
+                <span class="text-peck-dark/60 text-sm uppercase tracking-widest font-headline">Motorcycle</span>
+                <span class="text-peck-dark/30">●</span>
+
+                <!-- Duplicate for seamless loop -->
+                <span class="font-display text-peck-dark text-2xl">$2.5M</span>
+                <span class="text-peck-dark/60 text-sm uppercase tracking-widest font-headline">Trucking</span>
+                <span class="text-peck-dark/30">●</span>
+                
+                <span class="font-display text-peck-dark text-2xl">$1.2M</span>
+                <span class="text-peck-dark/60 text-sm uppercase tracking-widest font-headline">Med Mal</span>
+                <span class="text-peck-dark/30">●</span>
+                
+                <span class="font-display text-peck-dark text-2xl">$750K</span>
+                <span class="text-peck-dark/60 text-sm uppercase tracking-widest font-headline">Slip & Fall</span>
+                <span class="text-peck-dark/30">●</span>
+                
+                <span class="font-display text-peck-dark text-2xl">$5M</span>
+                <span class="text-peck-dark/60 text-sm uppercase tracking-widest font-headline">Wrongful Death</span>
+                <span class="text-peck-dark/30">●</span>
+
+                <span class="font-display text-peck-dark text-2xl">$890K</span>
+                <span class="text-peck-dark/60 text-sm uppercase tracking-widest font-headline">Motorcycle</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                
+                <!-- Image -->
+                <div class="relative group">
+                    <!-- Yellow accent block -->
+                    <div class="absolute -top-6 -left-6 w-full h-full bg-peck-yellow z-0 group-hover:-translate-x-2 group-hover:-translate-y-2 transition-transform duration-500"></div>
+                    <div class="relative z-10 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop" 
+                             alt="John Peck - Trial Attorney" 
+                             class="w-full aspect-[4/5] object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                        <!-- Overlay -->
+                        <div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-peck-dark to-transparent">
+                            <p class="font-display text-white text-xl">"WE FIGHT BECAUSE WE CARE."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div>
+                    <div class="inline-flex items-center gap-3 mb-6">
+                        <span class="w-12 h-[2px] bg-peck-yellow"></span>
+                        <span class="text-peck-yellow font-headline font-bold text-xs uppercase tracking-[0.2em]">The Firm</span>
+                    </div>
+                    
+                    <h2 class="font-display text-4xl md:text-5xl lg:text-6xl text-peck-dark leading-[1.1] mb-8">
+                        BUILT DIFFERENT.<br>
+                        <span class="text-stroke">FOR A REASON.</span>
+                    </h2>
+
+                    <p class="text-lg text-gray-600 leading-relaxed mb-8 font-body">
+                        Our first 50 cases came from handing out "Fuck the Insurance Company" t-shirts at motorcycle rallies. We've generated over $100k in revenue from Reddit recommendations alone. 
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-10 font-body">
+                        We're not your typical law firm. We're riders, fighters, and relentless advocates who happen to have law degrees. When insurance companies see our name, they know it's going to cost them.
+                    </p>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-8 border-t border-gray-200 pt-8">
+                        <div>
+                            <div class="font-display text-4xl text-peck-dark mb-1">$50M+</div>
+                            <div class="text-xs text-gray-500 uppercase tracking-widest font-headline">Recovered</div>
+                        </div>
+                        <div>
+                            <div class="font-display text-4xl text-peck-dark mb-1">98%</div>
+                            <div class="text-xs text-gray-500 uppercase tracking-widest font-headline">Win Rate</div>
+                        </div>
+                        <div>
+                            <div class="font-display text-4xl text-peck-dark mb-1">24/7</div>
+                            <div class="text-xs text-gray-500 uppercase tracking-widest font-headline">Available</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Areas -->
+    <section class="py-32 bg-peck-dark relative grain">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-peck-yellow font-headline font-bold text-xs uppercase tracking-[0.2em] mb-4 block">What We Do</span>
+                <h2 class="font-display text-4xl md:text-5xl text-white">WE HANDLE THE HARD ONES.</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="group relative bg-white/5 border border-white/10 p-8 hover:border-peck-yellow transition-all duration-500 hover-lift cursor-pointer">
+                    <div class="text-peck-yellow text-4xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-motorcycle"></i>
+                    </div>
+                    <h3 class="font-display text-xl text-white mb-3">MOTORCYCLE ACCIDENTS</h3>
+                    <p class="text-white/50 text-sm font-body">Riders get the short end. We change that. Complex reconstruction, aggressive negotiation.</p>
+                    <div class="absolute top-6 right-6 w-8 h-8 border border-white/20 flex items-center justify-center text-white/40 group-hover:border-peck-yellow group-hover:text-peck-yellow transition-colors">
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group relative bg-white/5 border border-white/10 p-8 hover:border-peck-yellow transition-all duration-500 hover-lift cursor-pointer">
+                    <div class="text-peck-yellow text-4xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-car-crash"></i>
+                    </div>
+                    <h3 class="font-display text-xl text-white mb-3">CAR ACCIDENTS</h3>
+                    <p class="text-white/50 text-sm font-body">From fender benders to catastrophic collisions. We know every insurance company's playbook.</p>
+                    <div class="absolute top-6 right-6 w-8 h-8 border border-white/20 flex items-center justify-center text-white/40 group-hover:border-peck-yellow group-hover:text-peck-yellow transition-colors">
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group relative bg-white/5 border border-white/10 p-8 hover:border-peck-yellow transition-all duration-500 hover-lift cursor-pointer">
+                    <div class="text-peck-yellow text-4xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3 class="font-display text-xl text-white mb-3">MEDICAL MALPRACTICE</h3>
+                    <p class="text-white/50 text-sm font-body">Surgical errors, misdiagnosis, birth injuries. We hold hospitals accountable.</p>
+                    <div class="absolute top-6 right-6 w-8 h-8 border border-white/20 flex items-center justify-center text-white/40 group-hover:border-peck-yellow group-hover:text-peck-yellow transition-colors">
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="group relative bg-white/5 border border-white/10 p-8 hover:border-peck-yellow transition-all duration-500 hover-lift cursor-pointer">
+                    <div class="text-peck-yellow text-4xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3 class="font-display text-xl text-white mb-3">WORKPLACE INJURIES</h3>
+                    <p class="text-white/50 text-sm font-body">Construction sites, industrial accidents. Your employer has lawyers—now you do too.</p>
+                    <div class="absolute top-6 right-6 w-8 h-8 border border-white/20 flex items-center justify-center text-white/40 group-hover:border-peck-yellow group-hover:text-peck-yellow transition-colors">
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="group relative bg-white/5 border border-white/10 p-8 hover:border-peck-yellow transition-all duration-500 hover-lift cursor-pointer">
+                    <div class="text-peck-yellow text-4xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-wheelchair"></i>
+                    </div>
+                    <h3 class="font-display text-xl text-white mb-3">CATASTROPHIC INJURY</h3>
+                    <p class="text-white/50 text-sm font-body">Life-altering injuries require life-changing settlements. We build long-term care plans.</p>
+                    <div class="absolute top-6 right-6 w-8 h-8 border border-white/20 flex items-center justify-center text-white/40 group-hover:border-peck-yellow group-hover:text-peck-yellow transition-colors">
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Card 6 - Featured -->
+                <div class="group relative bg-peck-yellow p-8 hover-lift cursor-pointer">
+                    <div class="text-peck-dark text-4xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-ribbon"></i>
+                    </div>
+                    <h3 class="font-display text-xl text-peck-dark mb-3">WRONGFUL DEATH</h3>
+                    <p class="text-peck-dark/70 text-sm font-body">Compassionate yet fierce. We fight for families who've lost everything.</p>
+                    <div class="absolute top-6 right-6 w-8 h-8 border border-peck-dark/30 flex items-center justify-center text-peck-dark/50 group-hover:border-peck-dark group-hover:text-peck-dark transition-colors">
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-32 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <div class="flex justify-center gap-1 text-peck-yellow mb-4">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h2 class="font-display text-4xl md:text-5xl text-peck-dark">WHAT THEY SAY.</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="group bg-gray-50 p-10 border-l-4 border-peck-yellow hover-lift">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 bg-peck-dark flex items-center justify-center text-white font-display text-xl">W</div>
+                        <div>
+                            <div class="font-headline font-bold text-peck-dark">Wanda Luna</div>
+                            <div class="text-xs text-gray-500 flex items-center gap-1">
+                                <i class="fab fa-google text-[#4285F4]"></i> Google Review
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 font-body leading-relaxed">
+                        "The best lawyer in Boston. Got right to it and got me more than expected. Was always attentive and if he was busy he would call me as soon as he could. <span class="text-peck-dark font-semibold">Definitely the best!</span>"
+                    </p>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="group bg-peck-dark p-10 border-l-4 border-peck-yellow hover-lift">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 bg-peck-yellow flex items-center justify-center text-peck-dark font-display text-xl">E</div>
+                        <div>
+                            <div class="font-headline font-bold text-white">Elaini Maeder</div>
+                            <div class="text-xs text-white/50 flex items-center gap-1">
+                                <i class="fab fa-google text-peck-yellow"></i> Google Review
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-white/80 font-body leading-relaxed text-2xl">
+                        "The Michael Jordan of lawyers 🐐"
+                    </p>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="group bg-gray-50 p-10 border-l-4 border-peck-yellow hover-lift">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 bg-peck-dark flex items-center justify-center text-white font-display text-xl">J</div>
+                        <div>
+                            <div class="font-headline font-bold text-peck-dark">James R.</div>
+                            <div class="text-xs text-gray-500 flex items-center gap-1">
+                                <i class="fab fa-google text-[#4285F4]"></i> Google Review
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 font-body leading-relaxed">
+                        "They don't treat you like a case number. They treat you like family. <span class="text-peck-dark font-semibold">I could call John at 9 PM on a Sunday and he'd pick up.</span> That's dedication."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Footer -->
+    <footer class="bg-peck-dark pt-32 pb-12 relative grain" id="contact">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20 mb-24">
+                
+                <!-- CTA -->
+                <div>
+                    <h2 class="font-display text-5xl md:text-6xl lg:text-7xl text-white leading-[1] mb-8">
+                        LET'S<br>
+                        <span class="text-peck-yellow">TALK.</span>
+                    </h2>
+                    <p class="text-white/60 text-xl mb-12 font-body max-w-md">
+                        Your case has a shelf life. The sooner you call, the stronger your case becomes.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <a href="tel:8575577325" class="flex items-center gap-6 group">
+                            <div class="w-16 h-16 border-2 border-white/20 flex items-center justify-center group-hover:border-peck-yellow group-hover:bg-peck-yellow transition-all">
+                                <i class="fas fa-phone text-white group-hover:text-peck-dark text-xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs uppercase tracking-widest text-white/40 mb-1 font-headline">24/7 Hotline</div>
+                                <div class="text-2xl text-white font-display group-hover:text-peck-yellow transition-colors">857-557-7325</div>
+                            </div>
+                        </a>
+
+                        <a href="mailto:info@callpeck.com" class="flex items-center gap-6 group">
+                            <div class="w-16 h-16 border-2 border-white/20 flex items-center justify-center group-hover:border-peck-yellow group-hover:bg-peck-yellow transition-all">
+                                <i class="fas fa-envelope text-white group-hover:text-peck-dark text-xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs uppercase tracking-widest text-white/40 mb-1 font-headline">Email</div>
+                                <div class="text-xl text-white font-headline font-bold group-hover:text-peck-yellow transition-colors">info@callpeck.com</div>
+                            </div>
+                        </a>
+
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 border-2 border-white/20 flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs uppercase tracking-widest text-white/40 mb-1 font-headline">Boston HQ</div>
+                                <div class="text-xl text-white font-headline font-bold">77 Franklin St, 4th Floor</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-white/5 border border-white/10 p-10">
+                    <h3 class="font-display text-2xl text-white mb-8">SEND A MESSAGE</h3>
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-2 gap-6">
+                            <input type="text" placeholder="Name" class="bg-white/5 border border-white/20 p-4 text-white placeholder-white/40 focus:border-peck-yellow outline-none">
+                            <input type="email" placeholder="Email" class="bg-white/5 border border-white/20 p-4 text-white placeholder-white/40 focus:border-peck-yellow outline-none">
+                        </div>
+                        <input type="tel" placeholder="Phone" class="w-full bg-white/5 border border-white/20 p-4 text-white placeholder-white/40 focus:border-peck-yellow outline-none">
+                        <textarea rows="4" placeholder="Tell us what happened..." class="w-full bg-white/5 border border-white/20 p-4 text-white placeholder-white/40 focus:border-peck-yellow outline-none resize-none"></textarea>
+                        <button class="w-full bg-peck-yellow text-peck-dark font-headline font-bold py-5 hover:bg-white transition-colors uppercase tracking-wider">
+                            Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Social & Bottom -->
+            <div class="border-t border-white/10 pt-12">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div class="flex items-center gap-6">
+                        <a href="https://www.instagram.com/calljohnpeck/" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white/60 hover:border-peck-yellow hover:text-peck-yellow transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com/callpeck" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white/60 hover:border-peck-yellow hover:text-peck-yellow transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/pecktrialattorneys/" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white/60 hover:border-peck-yellow hover:text-peck-yellow transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.yelp.com/biz/peck-trial-attorneys-boston" target="_blank" class="w-12 h-12 border border-white/20 flex items-center justify-center text-white/60 hover:border-peck-yellow hover:text-peck-yellow transition-colors">
+                            <i class="fab fa-yelp"></i>
+                        </a>
+                    </div>
+
+                    <div class="text-white/40 text-xs font-headline flex items-center gap-4">
+                        <span>© 2026 Peck Trial Attorneys</span>
+                        <span>•</span>
+                        <a href="privacy-policy.html" class="hover:text-peck-yellow transition-colors">Privacy</a>
+                        <span>•</span>
+                        <a href="terms-of-service.html" class="hover:text-peck-yellow transition-colors">Terms</a>
+                    </div>
+
+                    <div class="text-white/40 text-xs font-headline flex items-center gap-2">
+                        Design by <span class="text-peck-yellow">Unsubscribe LLC</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="fixed bottom-0 left-0 w-full md:hidden z-50 bg-peck-dark/95 backdrop-blur-md border-t border-white/10 p-4 flex gap-4">
+        <a href="tel:8575577325" class="flex-1 bg-peck-yellow text-peck-dark font-headline font-bold py-4 text-center text-sm uppercase tracking-wider">
+            <i class="fas fa-phone mr-2"></i> Call
+        </a>
+        <a href="#contact" class="flex-1 border-2 border-peck-yellow text-peck-yellow font-headline font-bold py-4 text-center text-sm uppercase tracking-wider">
+            Free Review
+        </a>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-peck-dark/95', 'backdrop-blur-md', 'py-4', 'border-b', 'border-white/10');
+                nav.classList.remove('py-6');
+            } else {
+                nav.classList.remove('bg-peck-dark/95', 'backdrop-blur-md', 'py-4', 'border-b', 'border-white/10');
+                nav.classList.add('py-6');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
