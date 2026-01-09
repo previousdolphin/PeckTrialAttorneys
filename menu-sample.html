@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Peck Provisions | Menu</title>
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prata&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Global Styles */
+        body {
+            background-color: #F2F0E9; /* Bone/Off-white paper color */
+            color: #1A1A1A;
+            font-family: 'Prata', serif;
+        }
+        
+        /* Font Family Utilities */
+        .font-serif { font-family: 'Prata', serif; }
+        .font-mono { font-family: 'Space Mono', monospace; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #F2F0E9; }
+        ::-webkit-scrollbar-thumb { background: #1A1A1A; }
+        
+        /* Dot Leader for Menu Items */
+        .menu-leader {
+            flex-grow: 1;
+            border-bottom: 1px dotted #a3a3a3;
+            margin: 0 10px;
+            position: relative;
+            top: -6px;
+        }
+
+        /* Subtle noise texture for paper feel */
+        .paper-texture {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 0;
+        }
+
+        /* Utility to hide scrollbar but keep functionality */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // --- ICONS (Inlined for stability) ---
+        const Shield = ({ size = 24, className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+        );
+        const Truck = ({ size = 24, className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                <path d="M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11"/>
+                <path d="M14 9h4l4 4v4c0 .6-.4 1-1 1h-2"/>
+                <circle cx="7" cy="18" r="2"/>
+                <circle cx="17" cy="18" r="2"/>
+            </svg>
+        );
+        const HardHat = ({ size = 24, className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                <path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"/>
+                <path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/>
+                <path d="M4 15v-3a6 6 0 0 1 6-6h0"/>
+                <path d="M14 6h0a6 6 0 0 1 6 6v3"/>
+            </svg>
+        );
+        const PenTool = ({ size = 24, className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                <path d="m12 19 7-7 3 3-7 7-3-3z"/>
+                <path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+                <path d="m2 2 7.586 7.586"/>
+                <circle cx="11" cy="11" r="2"/>
+            </svg>
+        );
+        const Scissors = ({ size = 24, className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                <circle cx="6" cy="6" r="3"/>
+                <path d="M8.12 8.12 12 12"/>
+                <path d="M20 4 8.12 15.88"/>
+                <circle cx="6" cy="18" r="3"/>
+                <path d="M14.8 14.8 20 20"/>
+            </svg>
+        );
+
+        // --- COMPONENTS ---
+
+        // Navigation Component
+        const Navigation = ({ activeSection, scrollTo }) => {
+            const navItems = [
+                { id: 'preface', label: 'Preface' },
+                { id: 'prix-fixe', label: 'I. Prix Fixe' },
+                { id: 'seasonal', label: 'II. Seasonal' },
+                { id: 'alacarte', label: 'III. À La Carte' },
+                { id: 'kitchen', label: 'IV. The Kitchen' }
+            ];
+
+            return (
+                <nav className="fixed top-0 left-0 w-full z-50 bg-[#F2F0E9]/95 backdrop-blur-sm border-b border-black/10 py-4 px-6 md:px-12 flex justify-between items-center transition-all duration-300">
+                    <div className="text-xs font-mono tracking-widest uppercase hidden md:block">
+                        Est. 2026 // Boston
+                    </div>
+                    <ul className="flex space-x-6 mx-auto md:mx-0 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 hide-scrollbar">
+                        {navItems.map((item) => (
+                            <li key={item.id} className="whitespace-nowrap flex-shrink-0">
+                                <button 
+                                    onClick={() => scrollTo(item.id)}
+                                    className={`text-xs uppercase tracking-widest hover:underline decoration-1 underline-offset-4 transition-colors font-mono ${activeSection === item.id ? 'font-bold' : 'text-gray-500'}`}
+                                >
+                                    {item.label}
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                    <div className="text-xs font-mono tracking-widest uppercase hidden md:block">
+                        Table 857
+                    </div>
+                </nav>
+            );
+        };
+
+        // Reusable Menu Item Component
+        const MenuItem = ({ title, price, description, details = [] }) => (
+            <div className="mb-10 group">
+                <div className="flex items-baseline justify-between mb-2">
+                    <h3 className="text-xl md:text-2xl font-bold uppercase tracking-wide group-hover:text-gray-700 transition-colors">{title}</h3>
+                    <div className="menu-leader hidden md:block"></div>
+                    <span className="text-lg font-mono whitespace-nowrap ml-2">{price}</span>
+                </div>
+                {/* Mobile Price fallback */}
+                <div className="md:hidden font-mono mb-2 text-sm">{price}</div>
+                
+                {description && <p className="text-sm md:text-base text-gray-800 leading-relaxed max-w-2xl font-serif italic mb-3">{description}</p>}
+                
+                {details.length > 0 && (
+                    <ul className="mt-3 space-y-1">
+                        {details.map((detail, idx) => (
+                            <li key={idx} className="font-mono text-xs text-gray-600 uppercase tracking-tight flex items-start">
+                                <span className="mr-2 text-black/40">›</span> {detail}
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </div>
+        );
+
+        // Seasonal Card Component
+        const SeasonalDrop = ({ quarter, title, division, aesthetic, main, side, detail, icon: Icon }) => (
+            <div className="border border-black p-6 md:p-8 hover:bg-black hover:text-[#F2F0E9] transition-colors duration-500 group relative overflow-hidden">
+                <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                   {Icon && <Icon size={64} className="stroke-1" />}
+                </div>
+
+                <div className="flex justify-between items-start border-b border-black/20 group-hover:border-[#F2F0E9]/20 pb-4 mb-6">
+                    <div>
+                        <span className="font-mono text-xs uppercase tracking-widest block mb-1 opacity-60">{quarter}</span>
+                        <h3 className="text-2xl md:text-3xl uppercase font-bold">{title}</h3>
+                    </div>
+                </div>
+
+                <div className="space-y-6">
+                    <div>
+                        <p className="font-mono text-xs uppercase tracking-wider opacity-60 mb-1">Division</p>
+                        <p className="text-sm font-bold uppercase">{division}</p>
+                    </div>
+                    
+                    <div>
+                        <p className="font-mono text-xs uppercase tracking-wider opacity-60 mb-1">Aesthetic</p>
+                        <p className="font-serif italic text-lg leading-snug opacity-90">{aesthetic}</p>
+                    </div>
+
+                    <div className="space-y-4 mt-6 pt-6 border-t border-dashed border-black/20 group-hover:border-[#F2F0E9]/20">
+                        <div className="flex flex-col md:flex-row md:gap-4">
+                            <div className="md:w-1/3 font-mono text-xs uppercase opacity-60 pt-1">The Main</div>
+                            <div className="md:w-2/3">
+                                <span className="font-bold block mb-1">{main.item}</span>
+                                <span className="font-mono text-xs opacity-80 block leading-relaxed">{main.spec}</span>
+                            </div>
+                        </div>
+                        <div className="flex flex-col md:flex-row md:gap-4">
+                            <div className="md:w-1/3 font-mono text-xs uppercase opacity-60 pt-1">The Side</div>
+                            <div className="md:w-2/3">
+                                <span className="font-bold block mb-1">{side.item}</span>
+                                <span className="font-mono text-xs opacity-80 block leading-relaxed">{side.spec}</span>
+                            </div>
+                        </div>
+                        <div className="flex flex-col md:flex-row md:gap-4">
+                            <div className="md:w-1/3 font-mono text-xs uppercase opacity-60 pt-1">The Detail</div>
+                            <div className="md:w-2/3 font-serif italic text-sm">{detail}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+
+        // --- MAIN APP COMPONENT ---
+        const App = () => {
+            const [activeSection, setActiveSection] = useState('preface');
+
+            useEffect(() => {
+                const handleScroll = () => {
+                    const sections = ['preface', 'prix-fixe', 'seasonal', 'alacarte', 'kitchen'];
+                    const current = sections.find(section => {
+                        const element = document.getElementById(section);
+                        if (element) {
+                            const rect = element.getBoundingClientRect();
+                            return rect.top >= 0 && rect.top <= 300;
+                        }
+                        return false;
+                    });
+                    if (current) setActiveSection(current);
+                };
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const scrollTo = (id) => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                    setActiveSection(id);
+                }
+            };
+
+            return (
+                <div className="min-h-screen relative selection:bg-black selection:text-white pb-32">
+                    {/* Paper Texture Overlay */}
+                    <div className="paper-texture"></div>
+                    
+                    <Navigation activeSection={activeSection} scrollTo={scrollTo} />
+
+                    <main className="relative z-10 max-w-4xl mx-auto px-6 md:px-12 pt-32">
+                        
+                        {/* Header */}
+                        <header className="text-center mb-24 md:mb-32">
+                            <h1 className="text-5xl md:text-8xl font-serif mb-4 tracking-tight">THE PECK<br/>PROVISIONS</h1>
+                            <div className="flex items-center justify-center gap-4 text-xs font-mono tracking-[0.2em] uppercase">
+                                <span>Est. 2026</span>
+                                <span>//</span>
+                                <span>Boston, MA</span>
+                            </div>
+                            <div className="mt-6 text-sm font-mono opacity-60">Purveyors of Legal Artifacts & Industrial Safety</div>
+                        </header>
+
+                        {/* Preface */}
+                        <section id="preface" className="mb-32 flex flex-col items-center text-center">
+                            <div className="border-t border-b border-black py-12 max-w-2xl">
+                                <h2 className="text-xs font-mono tracking-[0.2em] uppercase mb-6 text-gray-500">Preface</h2>
+                                <p className="text-2xl md:text-3xl font-serif italic leading-relaxed mb-6">
+                                    "We do not make swag."
+                                </p>
+                                <p className="text-sm md:text-base font-sans leading-loose max-w-lg mx-auto text-gray-800">
+                                    Swag is a commodity. We fabricate <strong>Departmental Uniforms</strong>—garments that imply membership in a high-stakes industrial division. We treat Peck Trial Attorneys not as a law firm, but as the holding company for the industries they litigate against.
+                                </p>
+                            </div>
+                        </section>
+
+                        {/* Course I: Prix Fixe */}
+                        <section id="prix-fixe" className="mb-32">
+                            <div className="flex items-center gap-4 mb-16">
+                                <span className="font-mono text-4xl">I.</span>
+                                <h2 className="text-4xl font-serif">Prix Fixe <span className="text-lg font-mono opacity-50 block md:inline md:ml-4">(The Retainer)</span></h2>
+                            </div>
+                            
+                            <p className="font-mono text-xs uppercase tracking-widest mb-12 border-l-2 border-black pl-4 py-2 opacity-70">
+                                A year-long curation of the Peck visual identity across four seasonal deployments.
+                            </p>
+
+                            <MenuItem 
+                                title='The "Partner" Tier'
+                                price="$XXk / Year"
+                                description="Comprehensive visual identity dominance."
+                                details={[
+                                    "Four Seasonal Drops (Spring, Summer, Fall, Winter)",
+                                    "300 Units Per Drop (Mixed SKU: Tees, Hoodies, Accessories)",
+                                    "Custom 'Subsidiary' Branding for each season",
+                                    "Includes: Photography/Lookbook assets for social media"
+                                ]}
+                            />
+
+                            <MenuItem 
+                                title='The "Associate" Tier'
+                                price="$XXk / Year"
+                                description="Targeted semi-annual deployments."
+                                details={[
+                                    "Two Seasonal Drops (S/S and F/W)",
+                                    "150 Units Per Drop",
+                                    "Includes: Flat-lay photography assets"
+                                ]}
+                            />
+                        </section>
+
+                        {/* Course II: Seasonal */}
+                        <section id="seasonal" className="mb-32">
+                            <div className="flex items-center gap-4 mb-16">
+                                <span className="font-mono text-4xl">II.</span>
+                                <h2 className="text-4xl font-serif">Seasonal Entrées <span className="text-lg font-mono opacity-50 block md:inline md:ml-4">(The Subsidiaries)</span></h2>
+                            </div>
+                            
+                            <p className="font-mono text-xs uppercase tracking-widest mb-12 border-l-2 border-black pl-4 py-2 opacity-70">
+                                Current "Subsidiary" narratives based on active Litigation Divisions.
+                            </p>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-px bg-black border border-black">
+                                <div className="bg-[#F2F0E9]">
+                                    <SeasonalDrop 
+                                        quarter="Q1 (Spring)"
+                                        title='The "Collision" Drop'
+                                        division="Peck Motor Sports"
+                                        aesthetic="Vintage Formula 1 meets local auto-body shop. High-octane and grease-stained."
+                                        icon={Truck}
+                                        main={{
+                                            item: "Racing Team Work Jacket",
+                                            spec: "Dickies or Red Kap. Chain-Stitch Embroidery for 'John' on chest. Large Chenille Patch on back."
+                                        }}
+                                        side={{
+                                            item: '5-Panel "Pit Crew" Hat',
+                                            spec: "High-density heat transfer (Racing Sponsor style)."
+                                        }}
+                                        detail='"Checkered Flag" motif with "857" (Area Code) racing numbers.'
+                                    />
+                                </div>
+                                <div className="bg-[#F2F0E9]">
+                                    <SeasonalDrop 
+                                        quarter="Q2 (Summer)"
+                                        title='The "Site Safety" Drop'
+                                        division="Peck Heavy Industries"
+                                        aesthetic="Union Ironworker. High-vis oranges, safety yellows, and brutalist typography."
+                                        icon={HardHat}
+                                        main={{
+                                            item: 'Heavyweight "Work Pocket" Tee',
+                                            spec: 'Carhartt style. Puff Print (3D ink) for "SITE SUPERVISOR" back text to mimic wet cement.'
+                                        }}
+                                        side={{
+                                            item: 'Nalgene Water Bottle',
+                                            spec: '"OSHA COMPLIANT" branding.'
+                                        }}
+                                        detail='Woven label on the hem: "UNION LOCAL 857."'
+                                    />
+                                </div>
+                                <div className="bg-[#F2F0E9]">
+                                    <SeasonalDrop 
+                                        quarter="Q3 (Fall)"
+                                        title='The "Interstate" Drop'
+                                        division="Peck Freight & Logistics"
+                                        aesthetic="Long-haul trucker. Americana, denim, and supply chain utility."
+                                        icon={Truck}
+                                        main={{
+                                            item: 'Heavy Flannel or Denim Jacket',
+                                            spec: 'DTG faded print for "worn-in" vintage trucker graphic. Custom leather patch.'
+                                        }}
+                                        side={{
+                                            item: 'Trucker Hat',
+                                            spec: 'Mesh back, high foam front.'
+                                        }}
+                                        detail="Keytag that looks like a commercial driver's logbook."
+                                    />
+                                </div>
+                                <div className="bg-[#F2F0E9]">
+                                    <SeasonalDrop 
+                                        quarter="Q4 (Winter)"
+                                        title='The "Premises" Drop'
+                                        division="Department of Public Safety"
+                                        aesthetic="Event Security meets Municipal Worker. Authority figures and access control."
+                                        icon={Shield}
+                                        main={{
+                                            item: '"Staff" style Coach’s Jacket',
+                                            spec: 'Nylon, snap button. 3M Reflective Ink for "SECURITY" placement (activates with flash).'
+                                        }}
+                                        side={{
+                                            item: 'Watch Cap Beanie',
+                                            spec: 'Safety Orange or Black.'
+                                        }}
+                                        detail='"CAUTION: WET FLOOR" graphic tee using yellow hazard tape visuals.'
+                                    />
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* Course III: À La Carte */}
+                        <section id="alacarte" className="mb-32">
+                             <div className="flex items-center gap-4 mb-16">
+                                <span className="font-mono text-4xl">III.</span>
+                                <h2 className="text-4xl font-serif">À La Carte <span className="text-lg font-mono opacity-50 block md:inline md:ml-4">(The Staples)</span></h2>
+                            </div>
+                            
+                            <p className="font-mono text-xs uppercase tracking-widest mb-12 border-l-2 border-black pl-4 py-2 opacity-70">
+                                Always-available essentials for office inventory. High-quality blanks only (Rue Porter / LA Apparel).
+                            </p>
+
+                             <MenuItem 
+                                title='The "Settlement" Hoodie'
+                                price="MKT Price"
+                                description='Heavyweight 14oz cotton fleece. "Peck Trial Attorneys" archival arch logo.'
+                                details={[
+                                    "Fabrication: Satin-stitch embroidery (Collegiate/Ivy League finish)",
+                                    "100 Units: $X,XXX",
+                                    "300 Units: $X,XXX"
+                                ]}
+                            />
+
+                             <MenuItem 
+                                title='The "Intake" Tee'
+                                price="MKT Price"
+                                description='Boxy fit, garment-dyed. Small chest logo, large "Call Peck" typography on back.'
+                                details={[
+                                    "Fabrication: Water-based ink (Soft hand feel, no plastic cracking)",
+                                    "100 Units: $X,XXX",
+                                    "300 Units: $X,XXX"
+                                ]}
+                            />
+                        </section>
+
+                        {/* Section IV: The Kitchen */}
+                        <section id="kitchen" className="bg-black text-[#F2F0E9] p-8 md:p-12 mt-20 relative overflow-hidden">
+                             <div className="flex items-center gap-4 mb-12 relative z-10">
+                                <span className="font-mono text-2xl md:text-4xl text-orange-500">IV.</span>
+                                <h2 className="text-2xl md:text-4xl font-serif">The Kitchen <span className="text-sm md:text-lg font-mono opacity-50 block md:inline md:ml-4">(Production & Sourcing)</span></h2>
+                            </div>
+
+                            <div className="grid md:grid-cols-2 gap-12 relative z-10">
+                                <div>
+                                    <h4 className="font-mono text-xs text-orange-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+                                        <Scissors size={14} /> Materiality
+                                    </h4>
+                                    <p className="font-serif leading-relaxed mb-4">
+                                        We utilize strictly high-gsm (grams per square meter) blanks. No thin fabrics. We apply the "Stone Island Doctrine" (Veneration of Potential Utility).
+                                    </p>
+                                    <p className="text-sm opacity-60">
+                                        Even if it's just a t-shirt, it is engineered to look like it can handle a job site.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h4 className="font-mono text-xs text-orange-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+                                        <PenTool size={14} /> Execution
+                                    </h4>
+                                    <ul className="space-y-3 font-mono text-sm opacity-80">
+                                        <li className="flex gap-2">
+                                            <span className="text-orange-500">01.</span>
+                                            Woven Neck Labels (No scratchy tags)
+                                        </li>
+                                        <li className="flex gap-2">
+                                            <span className="text-orange-500">02.</span>
+                                            Hem Tags on every shirt
+                                        </li>
+                                        <li className="flex gap-2">
+                                            <span className="text-orange-500">03.</span>
+                                            Poly-bagged and size-stickered for professional distribution
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            {/* Decorative industrial stamp */}
+                            <div className="absolute -bottom-6 -right-6 md:bottom-6 md:right-6 border-4 border-orange-500/20 text-orange-500/20 rounded-full w-48 h-48 flex items-center justify-center transform -rotate-12 z-0">
+                                <div className="text-center font-mono font-bold text-xs">
+                                    ROCCO ARENA<br/>CUSTOM<br/>FULFILLMENT<br/>APPROVED
+                                </div>
+                            </div>
+                        </section>
+
+                        <footer className="mt-32 pb-12 text-center font-mono text-[10px] uppercase tracking-widest opacity-40">
+                            <p>Peck Provisions © 2026</p>
+                            <p className="mt-2">Legal Artifacts & Industrial Safety Division</p>
+                        </footer>
+
+                    </main>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
